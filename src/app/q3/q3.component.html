@@ -1,0 +1,30 @@
+<div class="container">
+
+  <h1> Dynamically Add New Input Fields in Angular </h1>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+
+    <table class="table table-bordered" formArrayName="numbers">
+      <tr>
+        <th colspan="2">Add Multiple Phone Numbers:</th>
+        <th ><button type="button" (click)="addNumbers()" class="btn btn-primary">Add More</button></th>
+      </tr>
+      <tr *ngFor="let quantity of numbers().controls; let i=index" [formGroupName]="i">
+        <td>
+            <input type="text" formControlName="num" class="form-control">
+        </td>
+
+        <td>
+            <button (click)="removeNumbers(i)" class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+    </table>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
+
+  <br/>
+
+</div>
